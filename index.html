@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krish Narotam - Biomedical Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #f9f9f9;
+            display: flex;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header/Cover Section */
+        .header-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: #fff;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .cover-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .header-section h1 {
+            font-size: 48px;
+            font-weight: normal;
+            margin-bottom: 16px;
+            color: #000;
+        }
+
+        .header-section .subtitle {
+            font-size: 18px;
+            color: #0066cc;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .intro-brief {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .intro-brief p {
+            margin-bottom: 16px;
+        }
+
+        /* Simple Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 200px;
+            right: 0;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px 40px;
+        }
+
+        .sticky-header.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sticky-header-inner-wrapper {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .sticky-header-content {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .sticky-header h1 {
+            font-weight: normal;
+            margin: 0;
+            color: #000;
+            white-space: nowrap;
+        }
+
+        .sticky-header .subtitle {
+            font-size: 14px;
+            color: #0066cc;
+            margin-left: 20px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            left: 100%;
+            margin-left: 20px;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 200px;
+            background: #fff;
+            padding: 60px 20px 40px 20px;
+            overflow-y: auto;
+        }
+
+        nav a {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #000;
+            padding: 8px 12px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            text-decoration: none;
+            border-left-color: #0066cc;
+            background: #f5f5f5;
+        }
+
+        nav a.active {
+            border-left-color: #0066cc;
+            background: #e6f2ff;
+            color: #0066cc;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 200px;
+            flex: 1;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        section {
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 2px dotted #d0d8e0;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            color: #000;
+        }
+
+        .intro {
+            margin-bottom: 40px;
+        }
+
+        .intro p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .objective {
+            font-style: italic;
+            color: #0066cc;
+            margin-bottom: 20px;
+            font-size: 18px;
+            padding-left: 20px;
+        }
+
+        .project {
+            margin-bottom: 60px;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .project h3 {
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 8px;
+            color: #0066cc;
+        }
+
+        .project-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .project p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .skill-tag {
+            background: #e6f2ff;
+            padding: 6px 14px;
+            font-size: 13px;
+            color: #0066cc;
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 16px;
+            background: #f9f9f9;
+        }
+
+        .experience-item h3 {
+            font-size: 18px;
+            font-weight: normal;
+            margin-bottom: 4px;
+            color: #0066cc;
+        }
+
+        .experience-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .experience-item li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dotted #d0d8e0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-links {
+            margin: 20px 0;
+        }
+
+        .contact-links a {
+            margin-right: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 8px 16px;
+            background: #e6f2ff;
+            color: #0066cc;
+        }
+
+        .contact-links a:hover {
+            background: #0066cc;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content-wrapper {
+                border-left: none;
+                border-right: none;
+            }
+
+            .mobile-nav {
+                display: block;
+                background: #fff;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .dynamic-header {
+                left: 0;
+            }
+
+            .dynamic-header h1 {
+                font-size: 32px !important;
+            }
+
+            .dynamic-header.stuck h1 {
+                font-size: 20px !important;
+            }
+
+            .dynamic-header .subtitle {
+                display: none;
+            }
+
+            .cover-photo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .header-section h1 {
+                font-size: 36px;
+            }
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Simple Sticky Header -->
+    <div class="sticky-header" id="stickyHeader">
+        <div class="sticky-header-inner-wrapper">
+            <div class="sticky-header-content" id="stickyHeaderContent">
+                <h1>Krish Narotam</h1>
+                <span class="subtitle">R&D Engineer</span>
+            </div>
+        </div>
+    </div>
+    <!-- Sticky Navigation -->
+    <nav>
+        <a href="#top" data-section="top">Home</a>
+        <a href="#about" data-section="about">About</a>
+        <a href="#professional-profile" data-section="professional-profile">Professional Profile</a>
+        <a href="#projects" data-section="projects">Projects</a>
+        <a href="#experience" data-section="experience">Experience</a>
+        <a href="#education" data-section="education">Education</a>
+        <a href="#contact" data-section="contact">Contact</a>
+        <div style="margin: 20px 0; padding-top: 20px; border-top: 2px dotted #d0d8e0;"></div>
+        <a href="essays.html" style="color: #0066cc;">Essays & Writing →</a>
+    </nav>
+
+    <!-- Mobile Navigation (shows on small screens) -->
+    <div class="mobile-nav">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <!-- Header Section (replaces full-page cover) -->
+            <div class="header-section" id="top">
+                <div class="cover-photo">
+                    [Add your photo here]
+                </div>
+                <h1>Krish Narotam</h1>
+                <div class="subtitle">Biomedical Engineer | Tissue Engineering & Medical Device R&D</div>
+                <div class="intro-brief">
+                    <p>UCSD bioengineering graduate (June 2026) with 6 months of R&D experience at Johnson & Johnson designing surgical instruments. I've worked across robotics, prosthetics, and tissue engineering—building everything from arthroscopic bioprinters to EMG-controlled prosthetic hands.</p>
+                    <p>Currently seeking full-time R&D engineering roles where I can combine mechanical design with biological systems to build tools that actually help people.</p>
+                </div>
+            </div>
+            <section id="about">
+                <h2>About</h2>
+                <div class="intro">
+                    <p class="objective">Life objective: Leave the world better than I found it.</p>
+            
+            <p>For as long as I can remember, I've wanted to help people and design cool things. If something wasn't both, I wasn't interested. I spent my childhood building LEGOs, sandcastles, and creating art—always driven to make things. In middle school, I discovered competitive robotics. Seven years later, my team won the world championship.</p>
+
+            <p>After high school, I didn't want to just continue with mechanical engineering. I wanted to learn new things, grow my skills, and help people. That's why I went into bioengineering with a focus on biotechnology. It was outside my wheelhouse—pharmaceuticals, bioreactors, gene editing—nothing like robotics.</p>
+
+            <p>I found myself dabbling everywhere: fully 3D-printed prosthetic hands and feet, mouse kinematics data acquisition, tissue 3D printing, internal rib fixation. I tried to learn as much as I could and figure out what I really wanted to make—how I wanted to make the world better.</p>
+
+            <p>I didn't find interest in just robotics, just cell engineering, or just tissue engineering. What I found most interesting is how they all combine to create a single product, a single tool to help someone's life.</p>
+
+            <p>After this wide range of experiences, I realized I'm driven to build at the intersection of the molecular and mechanical. I want to build tools, devices, and instruments that work with biology to truly affect people and change lives. That's what I'm building now: an arthroscopic bioprinter that combines robotics, tissue engineering, and surgical instrumentation to repair tendons during surgery. It's exactly the kind of convergence that excites me—mechanical precision meeting biological complexity to solve real clinical problems.</p>
+        </div>
+    </section>
+
+    <section id="professional-profile">
+        <h2>Professional Profile</h2>
+        
+        <div class="intro">
+            <p><strong>Overview:</strong></p>
+            <p>R&D engineer with experience in prosthetics, tissue 3D printing, surgical tool design, and robotics. Specific expertise in rapidly taking ideas from early concepts to working prototypes in the order of months.</p>
+            
+            <p>Career foundation in robotics and mechanical engineering but studied biomedical technologies like bioreactor design, biomaterials, recombinant DNA, and cell bioengineering.</p>
+            
+            <p>Interested in the intersection between medtech and tissue/molecular engineering to build products and services that heal people.</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>Worked With:</h3>
+            <ul>
+                <li>DePuy Synthes (Johnson and Johnson)</li>
+                <li>Limber Prosthetics</li>
+                <li>UCSD Department of Nanoengineering</li>
+                <li>UCSD Department of Bioengineering</li>
+                <li>UCSD Biomedical Engineering Society</li>
+                <li>Dexcom</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Technical Skills:</h3>
+            
+            <p><strong>Design & CAD:</strong> SolidWorks (5+ projects, advanced assemblies), Creo Parametric, parametric design, GD&T, DFM/DFA principles, tolerance analysis</p>
+            
+            <p><strong>Prototyping & Fabrication:</strong> 3D printing (FDM, SLA, multi-material), CNC machining, injection molding, laser cutting, rapid prototyping, benchtop testing</p>
+            
+            <p><strong>Analysis & Testing:</strong> FEA simulation, mechanical characterization, burst pressure testing, flow rate analysis, mechanical testing protocols, Design of Experiments</p>
+            
+            <p><strong>Programming & Electronics:</strong> Python, C++, MATLAB, Arduino, Raspberry Pi, sensor integration, motor control, EMG signal processing, ROS (learning)</p>
+            
+            <p><strong>Bioengineering:</strong> Cell culture (mammalian cells), sterile technique, bioprinting, bioreactor design, biomaterials, hydrogel formulation, CRISPR gene editing, molecular biology, recombinant DNA</p>
+            
+            <p><strong>Medical Devices:</strong> FDA design controls, ISO 13485, Design History File documentation, risk analysis, V&V protocols, surgical instrument design, anatomical modeling</p>
+            
+            <p><strong>Data Analysis:</strong> Statistical analysis, Python (pandas, numpy, matplotlib), MATLAB, data visualization, experimental design</p>
+            
+            <p><strong>Soft Skills:</strong> Cross-functional collaboration, technical communication, mentoring junior engineers, surgeon/clinician interaction, presenting to stakeholders, project management, rapid iteration, problem-solving under constraints</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="project">
+            <h3>Arthroscopic Bioprinter for Tendon Repair</h3>
+            <div class="project-meta">Chen Laboratory, UC San Diego | Oct 2023 - Present</div>
+            
+            <div class="project-image">[Replace with: Bioprinter prototype photo]</div>
+
+            <p><strong>The Problem:</strong> Tendon injuries, especially rotator cuff tears, have poor healing outcomes because it's nearly impossible to deliver cells and growth factors directly to the injury site during minimally invasive surgery.</p>
+
+            <p><strong>What I Built:</strong> A minimally invasive arthroscopic device that 3D prints tissue scaffolds directly inside the body during surgery. Think of it as bringing the tissue engineering lab into the operating room; we can now deposit cell-laden hydrogels exactly where they're needed through a small incision.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Bring device from concept to working prototype</li>
+                <li>Present to surgeons and use feedback to improve design</li>
+                <li>Mentor other students in team to speed up processes</li>
+            </ul>
+
+            <p><strong>The Hard Parts:</strong> The first prototype worked well but had to be modified heavily to improve on what the surgeons and printing needs as they changed throughout the project. The pressure regulator couldn't handle the viscosity of the bioink, and the whole thing clogged within 30 seconds. We had to redesign the entire fluidic pathway, switching from constant pressure to pulsed delivery. The second challenge was UV curing; getting consistent light exposure in a confined, wet surgical cavity while maintaining biocompatibility.</p>
+
+            <p><strong>Technical Details:</strong> Designed mechanical systems in SolidWorks, integrated Arduino-based control for stepper motors and UV LED timing, characterized flow rates and burst pressure, performed cell viability testing. Currently preparing manuscript as first author and have a patent pending.</p>
+
+            <div class="skills">
+                <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Arduino/C++</span>
+                <span class="skill-tag">Fluidics</span>
+                <span class="skill-tag">Cell Culture</span>
+                <span class="skill-tag">3D Printing</span>
+                <span class="skill-tag">CRISPR</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>Surgical Instruments for Arthroscopic Surgery</h3>
+            <div class="project-meta">DePuy Synthes (Johnson & Johnson) | Jan 2025 - June 2025</div>
+            
+            <div class="project-image">[Replace with: CAD model or prototype photo from DePuy]</div>
+
+            <p><strong>The Experience:</strong> Six months inside J&J's R&D machine, designing surgical instruments that orthopedic surgeons would actually use in operating rooms. This wasn't academic research; this was product development with real timelines, real surgeons giving feedback, and real manufacturing constraints.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Design three arthroscopic instruments from concept through functional prototypes</li>
+                <li>Collaborate with surgeons to understand clinical needs and iterate based on feedback</li>
+                <li>Conduct FEA and mechanical testing to validate designs</li>
+                <li>Document all work per FDA design controls and ISO 13485 requirements</li>
+            </ul>
+
+            <p><strong>What I Learned:</strong> How to design for surgeons (not engineers), how to fail fast with cheap prototypes before committing to expensive tooling, and how FDA design controls actually work in practice. I designed three instruments from concept through functional prototypes, working directly with surgeons to understand what they needed and why existing tools weren't good enough.</p>
+
+            <p><strong>The Reality Check:</strong> Most of my "brilliant" first designs were immediately shot down by surgeons. "This would be impossible to use with one hand." "The angle is wrong for how we actually approach the joint." I learned more from those failures than any textbook could teach.</p>
+
+            <p><strong>Technical Details:</strong> SolidWorks and Creo for CAD, FEA for stress analysis, worked with machine shops and contract manufacturers, conducted mechanical testing, documented everything per FDA design controls.</p>
+
+            <div class="skills">
+                <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Creo</span>
+                <span class="skill-tag">FEA</span>
+                <span class="skill-tag">Prototyping</span>
+                <span class="skill-tag">FDA Design Controls</span>
+                <span class="skill-tag">DFM</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>Transtibial Prosthetic Design & Gait Analysis</h3>
+            <div class="project-meta">Limber Prosthetics | Dec 2022 - July 2024</div>
+            
+            <div class="project-image">[Replace with: Gait analysis setup or prosthetic CAD model]</div>
+
+            <p><strong>The Mission:</strong> Make advanced prosthetics accessible. Limber's approach was to use parametric design and modern manufacturing to create custom prosthetics at a fraction of traditional costs.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Build data pipeline for clinical trials to process gait analysis from 10-20 patients</li>
+                <li>Develop parametric CAD models that automatically adjust geometry based on patient scans</li>
+                <li>Create analysis tools to quantify walking patterns and prosthetic performance</li>
+                <li>Establish protocols aligned with ISO 22675 standards for prosthetic testing</li>
+            </ul>
+
+            <p><strong>My Role:</strong> I built the data pipeline for their clinical trials, processing gait analysis data from 10 to 20 patients to evaluate prosthetic performance. This meant instrumenting patients with sensors, collecting biomechanical data, and developing Python tools to analyze walking patterns and quantify improvements.</p>
+
+            <p><strong>What Worked:</strong> Created parametric CAD models that could automatically adjust geometry based on patient scans. Built analysis tools that reduced data processing time from 4 hours to 30 minutes per patient; these tools are still in use at Limber today.</p>
+
+            <p><strong>Technical Details:</strong> Python for data analysis, SolidWorks for parametric prosthetic design, developed protocols aligned with ISO 22675 standards for prosthetic testing.</p>
+
+            <div class="skills">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Gait Analysis</span>
+                <span class="skill-tag">Parametric CAD</span>
+                <span class="skill-tag">Clinical Testing</span>
+                <span class="skill-tag">Data Analysis</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>EMG-Controlled Prosthetic Hand</h3>
+            <div class="project-meta">UCSD Biomedical Engineering Society | Oct 2022 - May 2023</div>
+            
+            <div class="project-image">[Replace with: Prosthetic hand prototype or team photo]</div>
+
+            <p><strong>The Challenge:</strong> Lead a team of four students to build a functional myoelectric prosthetic hand for the BMES design competition. We had limited budget, limited time, and ambitious goals.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Lead 4-person team through design, prototyping, and testing cycles</li>
+                <li>Program Arduino control system to process EMG signals and actuate servos</li>
+                <li>Design and fabricate mechanical finger assemblies using 3D printing</li>
+                <li>Integrate sensors and develop signal processing algorithms for muscle activation</li>
+            </ul>
+
+            <p><strong>What We Built:</strong> A 3D-printed prosthetic hand controlled by EMG signals from the user's forearm muscles. Flex your muscle, servos actuate the fingers. Simple in concept, nightmarish in execution.</p>
+
+            <p><strong>The Problems:</strong> EMG signals are noisy. Really noisy. Getting clean muscle activation signals while filtering out electrical interference and motion artifacts required multiple iterations of signal processing algorithms. We also had to solve mechanical challenges; making finger joints strong enough to grip objects but light enough for the servos to move quickly.</p>
+
+            <p><strong>What I Learned:</strong> How to lead a technical team, how to divide tasks among people with different skill levels, and how to ship something functional even when it's not perfect. We got it working well enough to demonstrate at the competition, even if it occasionally did weird things.</p>
+
+            <div class="skills">
+                <span class="skill-tag">Arduino</span>
+                <span class="skill-tag">EMG Signal Processing</span>
+                <span class="skill-tag">Servo Control</span>
+                <span class="skill-tag">3D Printing</span>
+                <span class="skill-tag">Team Leadership</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>3D Printing Vessels and Surgery Training Setup</h3>
+            <div class="project-meta">[Add your dates here]</div>
+            
+            <div class="project-image">[Add your image here]</div>
+
+            <p><strong>The Problem:</strong> [Fill in what problem you were solving]</p>
+
+            <p><strong>What I Built:</strong> [Fill in what you built]</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>[Add responsibility 1]</li>
+                <li>[Add responsibility 2]</li>
+                <li>[Add responsibility 3]</li>
+            </ul>
+
+            <p><strong>The Hard Parts:</strong> [Fill in challenges you faced]</p>
+
+            <p><strong>Technical Details:</strong> [Fill in technical details, tools used, etc.]</p>
+
+            <div class="skills">
+                <span class="skill-tag">[Skill 1]</span>
+                <span class="skill-tag">[Skill 2]</span>
+                <span class="skill-tag">[Skill 3]</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="experience-item">
+            <h3>R&D Co-op</h3>
+            <div class="experience-meta">DePuy Synthes | Johnson & Johnson | Jan 2025 - June 2025</div>
+            <ul>
+                <li>Designed three arthroscopic surgical instruments from concept through functional prototypes</li>
+                <li>Collaborated with surgeons and cross-functional teams to refine designs based on clinical feedback</li>
+                <li>Conducted FEA and mechanical testing to validate design outputs</li>
+                <li>Documented all work per FDA design controls and ISO 13485</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Undergraduate Researcher</h3>
+            <div class="experience-meta">Chen Laboratory, UC San Diego | Oct 2023 - Present</div>
+            <ul>
+                <li>Designed and built arthroscopic bioprinting device for minimally invasive tendon repair</li>
+                <li>Developed fluidic systems, integrated electronics and firmware, characterized performance</li>
+                <li>First author on manuscript in preparation, patent pending</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>R&D Intern</h3>
+            <div class="experience-meta">Limber Prosthetics | Dec 2022 - July 2024</div>
+            <ul>
+                <li>Built Python data analysis pipelines for clinical gait analysis</li>
+                <li>Developed parametric CAD models for patient-specific prosthetic design</li>
+                <li>Created protocols aligned with ISO 22675 standards</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Programming Sub-Lead</h3>
+            <div class="experience-meta">UCSD Biomedical Engineering Society | Oct 2022 - May 2023</div>
+            <ul>
+                <li>Led 4-person team developing EMG-controlled prosthetic hand</li>
+                <li>Programmed Arduino control system, integrated sensors and servo motors</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>VEX Robotics World Champion</h3>
+            <div class="experience-meta">2015 - 2022</div>
+            <ul>
+                <li>Seven years of competitive robotics culminating in world championship victory (2022)</li>
+                <li>Designed, built, and programmed competition robots</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="experience-item">
+            <h3>B.S. Bioengineering: Biotechnology</h3>
+            <div class="experience-meta">University of California San Diego | Graduating June 2026</div>
+            <ul>
+                <li>3.78 GPA, Provost Honors</li>
+                <li>Relevant Coursework: Bioprocessing, Tissue Engineering, Biomechanics, Molecular Biology</li>
+            </ul>
+        </div>
+    </section>
+
+            <footer id="contact">
+                <h2>Contact</h2>
+                <div class="contact-links">
+                    <a href="mailto:krish.narotam@gmail.com">Email</a>
+                    <a href="https://linkedin.com/in/krishnarotam" target="_blank">LinkedIn</a>
+                    <a href="tel:602-396-6945">Phone</a>
+                </div>
+                <p style="margin-top: 20px; font-size: 13px;">Last updated February 2026</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Simple sticky header - just show/hide
+        const stickyHeader = document.getElementById('stickyHeader');
+        const headerSection = document.querySelector('.header-section');
+        
+        let ticking = false;
+        
+        function lerp(start, end, progress) {
+            return start + (end - start) * progress;
+        }
+        
+        function updateHeader() {
+            const mainHeader = document.querySelector('.header-section h1');
+            const mainHeaderRect = mainHeader.getBoundingClientRect();
+            const headerSection = document.querySelector('.header-section');
+            const h1Element = stickyHeader.querySelector('h1');
+            const subtitleElement = stickyHeader.querySelector('.subtitle');
+            
+            // Show sticky header when main header reaches top of viewport
+            if (mainHeaderRect.top <= 20) {
+                stickyHeader.classList.add('visible');
+                
+                // Calculate how far we've scrolled past the header hitting the top
+                const scrollPastTop = Math.max(0, 20 - mainHeaderRect.top);
+                
+                // Animation completes halfway through home section
+                const homeSectionHeight = headerSection.offsetHeight;
+                const animationDistance = homeSectionHeight / 2;
+                
+                // Calculate progress (0 = large, 1 = small)
+                const progress = Math.min(scrollPastTop / animationDistance, 1);
+                
+                // Smoothly shrink font from 48px to 24px
+                const currentFontSize = lerp(48, 24, progress);
+                h1Element.style.fontSize = currentFontSize + 'px';
+                
+                // Show subtitle only after shrinking is complete (progress = 1)
+                if (progress >= 1) {
+                    subtitleElement.style.opacity = '1';
+                } else {
+                    subtitleElement.style.opacity = '0';
+                }
+                
+            } else {
+                // Header is hidden - reset to initial state
+                stickyHeader.classList.remove('visible');
+                h1Element.style.fontSize = '48px';
+                subtitleElement.style.opacity = '0';
+            }
+            
+            // Update active navigation
+            updateActiveNav();
+            
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        });
+        
+        // Initialize on load
+        updateHeader();
+
+        // Update active navigation based on scroll position
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section, .header-section');
+            const navLinks = document.querySelectorAll('nav a[data-section]');
+            
+            let currentSection = 'top';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                const scrollPosition = window.scrollY;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSection = section.id || 'top';
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

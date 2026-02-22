@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essays & Writing - Krish Narotam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #f9f9f9;
+            display: flex;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 200px;
+            background: #fff;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        nav h3 {
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+
+        nav a {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #000;
+            padding: 8px 12px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            text-decoration: none;
+            border-left-color: #0066cc;
+            background: #f5f5f5;
+        }
+
+        nav .back-link {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dotted #d0d8e0;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 200px;
+            flex: 1;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 12px;
+            color: #000;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .essay-list {
+            margin-top: 40px;
+        }
+
+        .essay-item {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 2px dotted #d0d8e0;
+        }
+
+        .essay-item:last-child {
+            border-bottom: none;
+        }
+
+        .essay-item h2 {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 8px;
+            color: #0066cc;
+        }
+
+        .essay-item h2 a {
+            color: #0066cc;
+        }
+
+        .essay-meta {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .essay-excerpt {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .placeholder-text {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content-wrapper {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav>
+        <h3>Essays</h3>
+        <a href="#" class="placeholder">Coming Soon...</a>
+        
+        <div class="back-link">
+            <a href="index.html">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h1>Essays & Writing</h1>
+                <p>Thoughts on bioengineering, tissue engineering, medical devices, and whatever else I'm thinking about.</p>
+            </div>
+
+            <div class="essay-list">
+                <div class="placeholder-text">
+                    <p>Essays coming soon. This is where you can write about:</p>
+                    <br>
+                    <p>• Technical deep-dives on your projects</p>
+                    <p>• Thoughts on the future of biomedical engineering</p>
+                    <p>• Lessons learned from building things</p>
+                    <p>• Problems you think are underrated</p>
+                    <p>• Anything else worth writing about</p>
+                    <br>
+                    <p style="color: #666; font-size: 14px;">To add an essay: Create a new .html file (e.g., essay-1.html) and add a link to it in the navigation.</p>
+                </div>
+
+                <!-- EXAMPLE ESSAY ITEM (commented out - uncomment and duplicate when you write essays)
+                <div class="essay-item">
+                    <h2><a href="essay-example.html">Why Prosthetics Are Still Too Expensive</a></h2>
+                    <div class="essay-meta">February 2026 • 8 min read</div>
+                    <div class="essay-excerpt">
+                        <p>Advanced prosthetics can cost $50,000-$100,000. This is absurd. The technology isn't that complicated anymore—patents have expired, 3D printing is cheap, and the electronics are commodity parts. So why haven't prices dropped?</p>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
