@@ -38,8 +38,8 @@
         }
 
         .cover-photo {
-            width: 280px;
-            height: 280px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             background: #f0f0f0;
             margin: 0 auto 30px;
@@ -48,6 +48,14 @@
             justify-content: center;
             color: #999;
             font-size: 14px;
+            overflow: hidden;
+        }
+
+        .cover-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .header-section h1 {
@@ -297,6 +305,102 @@
             line-height: 1.6;
         }
 
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 120px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #0066cc;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .timeline-date {
+            width: 110px;
+            text-align: right;
+            font-size: 13px;
+            color: #666;
+            font-weight: normal;
+            padding-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0066cc;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #0066cc;
+        }
+
+        .timeline-title {
+            font-weight: normal;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title a {
+            color: #0066cc;
+        }
+
+        .timeline-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-date {
+                width: 100%;
+                text-align: left;
+                padding-right: 0;
+                padding-left: 30px;
+                margin-bottom: 5px;
+            }
+
+            .timeline-content {
+                padding-left: 30px;
+            }
+
+            .timeline-content::before {
+                left: -16px;
+            }
+        }
+
         footer {
             margin-top: 40px;
             padding-top: 30px;
@@ -392,7 +496,6 @@
         <a href="#about" data-section="about">About</a>
         <a href="#professional-profile" data-section="professional-profile">Professional Profile</a>
         <a href="#projects" data-section="projects">Projects</a>
-        <a href="#experience" data-section="experience">Experience</a>
         <a href="#education" data-section="education">Education</a>
         <a href="#contact" data-section="contact">Contact</a>
         <div style="margin: 20px 0; padding-top: 20px; border-top: 2px dotted #d0d8e0;"></div>
@@ -403,8 +506,9 @@
     <div class="mobile-nav">
         <a href="#top">Home</a>
         <a href="#about">About</a>
+        <a href="#professional-profile">Professional Profile</a>
         <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
     </div>
 
@@ -414,13 +518,13 @@
             <!-- Header Section (replaces full-page cover) -->
             <div class="header-section" id="top">
                 <div class="cover-photo">
-                    [Add your photo here]
+                    <img src="profile-photo.jpg" alt="Krish Narotam">
                 </div>
                 <h1>Krish Narotam</h1>
                 <div class="subtitle">Biomedical Engineer | Tissue Engineering & Medical Device R&D</div>
                 <div class="intro-brief">
-                    <p>UCSD bioengineering graduate (June 2026) with 6 months of R&D experience at Johnson & Johnson designing surgical instruments. I've worked across robotics, prosthetics, and tissue engineering—building everything from arthroscopic bioprinters to EMG-controlled prosthetic hands.</p>
-                    <p>Currently seeking full-time R&D engineering roles where I can combine mechanical design with biological systems to build tools that actually help people.</p>
+                    <p>UCSD bioengineering graduate (June 2026) with industry R&D experience in rapid prototyping and medical device development. Background spans robotics, prosthetics, surgical instruments, and tissue 3D printing.</p>
+                    <p>Seeking R&D engineering roles at the intersection of hardware and tissue/molecular engineering.</p>
                 </div>
             </div>
             <section id="about">
@@ -453,33 +557,93 @@
         </div>
 
         <div class="experience-item">
-            <h3>Worked With:</h3>
-            <ul>
-                <li>DePuy Synthes (Johnson and Johnson)</li>
-                <li>Limber Prosthetics</li>
-                <li>UCSD Department of Nanoengineering</li>
-                <li>UCSD Department of Bioengineering</li>
-                <li>UCSD Biomedical Engineering Society</li>
-                <li>Dexcom</li>
-            </ul>
+            <h3>Career Timeline & Key Takeaways</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2015 - 2022</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Competition Robotics (VEX)</div>
+                        <div class="timeline-text">World championship victory, built foundation in CAD, fabrication, and rapid iteration.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2022 - Jul 2024</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://limberprosthetics.com" target="_blank">Limber Prosthetics</a></div>
+                        <div class="timeline-text">Automated clinician workflows and built gait analysis pipelines, learned user-centered design.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2022 - May 2023</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://bmesatucsd.org" target="_blank">UCSD BMES</a> Prosthetic Hand</div>
+                        <div class="timeline-text">Led EMG-controlled prosthetic team, mastered signal processing and team leadership.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2023 - Dec 2023</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://cmrg.ucsd.edu" target="_blank">CMRG</a> Mouse Biomechanics</div>
+                        <div class="timeline-text">Built LabVIEW data acquisition system, learned to work with existing codebases.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2023 - Present</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Lab</a> Arthroscopic Bioprinter</div>
+                        <div class="timeline-text">Leading device development, integrating surgeon feedback, and mentoring team members.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2024 - Present</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Lab</a> 3D Printed Vessels</div>
+                        <div class="timeline-text">Developing vessel biomaterials and microsurgery training devices through iterative testing.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2025 - Jun 2025</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://www.jnjmedtech.com/en-US/companies/depuy-synthes" target="_blank">DePuy Synthes</a> (J&J)</div>
+                        <div class="timeline-text">Designed rib fixation instruments, learned FDA design controls and design for manufacturing.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2025 - Present</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">CTE Lab, UCSD</div>
+                        <div class="timeline-text">Leading proteoglycan extraction and hydrogel synthesis for cartilage tissue engineering, designing bioreactor systems.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px;"><strong>Key Skills Used Daily:</strong> SolidWorks/Fusion 360 for CAD, Python for automation and analysis, Arduino/C++ for hardware integration, cell culture and biomaterial formulation, mechanical testing and characterization, presenting to stakeholders, mentoring team members.</p>
         </div>
 
         <div class="experience-item">
             <h3>Technical Skills:</h3>
             
-            <p><strong>Design & CAD:</strong> SolidWorks (5+ projects, advanced assemblies), Creo Parametric, parametric design, GD&T, DFM/DFA principles, tolerance analysis</p>
+            <p><strong>Design & CAD:</strong> SolidWorks (5+ projects, advanced assemblies), Creo Parametric, Fusion 360, parametric design, GD&T, DFM/DFA principles, tolerance analysis, nTopology</p>
             
             <p><strong>Prototyping & Fabrication:</strong> 3D printing (FDM, SLA, multi-material), CNC machining, injection molding, laser cutting, rapid prototyping, benchtop testing</p>
             
             <p><strong>Analysis & Testing:</strong> FEA simulation, mechanical characterization, burst pressure testing, flow rate analysis, mechanical testing protocols, Design of Experiments</p>
             
-            <p><strong>Programming & Electronics:</strong> Python, C++, MATLAB, Arduino, Raspberry Pi, sensor integration, motor control, EMG signal processing, ROS (learning)</p>
+            <p><strong>Programming & Electronics:</strong> Python, C++, MATLAB, Arduino, Raspberry Pi, sensor integration, motor control, EMG signal processing, PCB design, LabVIEW, NI DAQ</p>
             
-            <p><strong>Bioengineering:</strong> Cell culture (mammalian cells), sterile technique, bioprinting, bioreactor design, biomaterials, hydrogel formulation, CRISPR gene editing, molecular biology, recombinant DNA</p>
+            <p><strong>Bioengineering:</strong> Cell culture (mammalian cells), sterile technique, bioprinting, bioreactor design, biomaterials, hydrogel formulation, fiber optics, molecular biology, recombinant DNA</p>
             
             <p><strong>Medical Devices:</strong> FDA design controls, ISO 13485, Design History File documentation, risk analysis, V&V protocols, surgical instrument design, anatomical modeling</p>
             
-            <p><strong>Data Analysis:</strong> Statistical analysis, Python (pandas, numpy, matplotlib), MATLAB, data visualization, experimental design</p>
+            <p><strong>Data Analysis:</strong> Statistical analysis, Python (pandas, numpy, matplotlib), MATLAB, data visualization, experimental design, OpenCap kinematics</p>
             
             <p><strong>Soft Skills:</strong> Cross-functional collaboration, technical communication, mentoring junior engineers, surgeon/clinician interaction, presenting to stakeholders, project management, rapid iteration, problem-solving under constraints</p>
         </div>
@@ -490,13 +654,15 @@
 
         <div class="project">
             <h3>Arthroscopic Bioprinter for Tendon Repair</h3>
-            <div class="project-meta">Chen Laboratory, UC San Diego | Oct 2023 - Present</div>
+            <div class="project-meta"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Laboratory</a>, UC San Diego | Oct 2023 - Present</div>
             
             <div class="project-image">[Replace with: Bioprinter prototype photo]</div>
 
             <p><strong>The Problem:</strong> Tendon injuries, especially rotator cuff tears, have poor healing outcomes because it's nearly impossible to deliver cells and growth factors directly to the injury site during minimally invasive surgery.</p>
 
-            <p><strong>What I Built:</strong> A minimally invasive arthroscopic device that 3D prints tissue scaffolds directly inside the body during surgery. Think of it as bringing the tissue engineering lab into the operating room; we can now deposit cell-laden hydrogels exactly where they're needed through a small incision.</p>
+            <p><strong>What I Built:</strong> A minimally invasive 3D printing device that allows surgeons to deposit a wide variety of biomaterials into the wound site. Designed the entire device from the ground up and the overarching concept for implantation side. Created the first generation prototype and designed, manufactured, assembled, and programmed the hardware integration of the electronics system.</p>
+            
+            <p>Worked on optimizing biomaterial candidates for strength, biocompatibility, injectability, and reliability in implementation. Worked on a double network hydrogel with UV curing to produce a biologically compatible implant. Also had to standardize the mechanical testing of the hydrogels as well as conduct cell viability studies with variety of printing conditions.</p>
 
             <p><strong>Key Responsibilities:</strong></p>
             <ul>
@@ -505,39 +671,46 @@
                 <li>Mentor other students in team to speed up processes</li>
             </ul>
 
-            <p><strong>The Hard Parts:</strong> The first prototype worked well but had to be modified heavily to improve on what the surgeons and printing needs as they changed throughout the project. The pressure regulator couldn't handle the viscosity of the bioink, and the whole thing clogged within 30 seconds. We had to redesign the entire fluidic pathway, switching from constant pressure to pulsed delivery. The second challenge was UV curing; getting consistent light exposure in a confined, wet surgical cavity while maintaining biocompatibility.</p>
+            <p><strong>Challenges:</strong> The most difficult challenge was working within the preexisting minimally invasive workflows. We wanted to keep the device working with the middle to low end of arthroscopic portals, so getting everything compact and manufacturable in a basic makerspace was a difficult challenge that is constantly improved and worked on.</p>
+            
+            <p>Another major challenge was ensuring biocompatibility while curing the hydrogels rapidly and with a high enough yield for strength and energy absorption. Had to learn and apply free radical polymerization theory to improve yield, molecular weight of polymer chains, and reduce cure time.</p>
+            
+            <p>Other challenges included getting everything into a hand held device, fully enclosed, and keeping the controls simple and reliable.</p>
 
-            <p><strong>Technical Details:</strong> Designed mechanical systems in SolidWorks, integrated Arduino-based control for stepper motors and UV LED timing, characterized flow rates and burst pressure, performed cell viability testing. Currently preparing manuscript as first author and have a patent pending.</p>
+            <p><strong>Technical Details:</strong> Designed mechanical systems in SolidWorks and Fusion 360, integrated Arduino-based control for stepper motors and UV LED timing, characterized flow rates and burst pressure, performed cell viability testing. Currently preparing manuscript as first author and have a patent pending.</p>
 
             <div class="skills">
                 <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Fusion 360</span>
                 <span class="skill-tag">Arduino/C++</span>
+                <span class="skill-tag">PCB Design</span>
+                <span class="skill-tag">Fiber Optics</span>
                 <span class="skill-tag">Fluidics</span>
                 <span class="skill-tag">Cell Culture</span>
+                <span class="skill-tag">Biomaterial Design</span>
                 <span class="skill-tag">3D Printing</span>
-                <span class="skill-tag">CRISPR</span>
             </div>
         </div>
 
         <div class="project">
             <h3>Surgical Instruments for Arthroscopic Surgery</h3>
-            <div class="project-meta">DePuy Synthes (Johnson & Johnson) | Jan 2025 - June 2025</div>
+            <div class="project-meta"><a href="https://www.jnjmedtech.com/en-US/companies/depuy-synthes" target="_blank">DePuy Synthes</a> (Johnson & Johnson) | Jan 2025 - June 2025</div>
             
             <div class="project-image">[Replace with: CAD model or prototype photo from DePuy]</div>
 
-            <p><strong>The Experience:</strong> Six months inside J&J's R&D machine, designing surgical instruments that orthopedic surgeons would actually use in operating rooms. This wasn't academic research; this was product development with real timelines, real surgeons giving feedback, and real manufacturing constraints.</p>
+            <p><strong>The Problem:</strong> Rib fixation is rarely done as it is a very invasive surgery and minimally invasive products are difficult to use, have low adoption, and mechanically unsound. Rib fractures are a common comorbidity as patients are unable to breathe deeply and has been related to pneumonia and other breathing based illnesses.</p>
+
+            <p><strong>What I Built:</strong> 3 minimally invasive arthroscopic devices to enter the chest cavity through a ~15 mm incision, hold onto a chest wall contoured plate, align the plate with the chest wall, enable the drilling and screwing of a locking screw into the plate across the fracture. Developed concepts for an arthroscopic grasper, tendon driven mechanism, and suture passing mechanism.</p>
 
             <p><strong>Key Responsibilities:</strong></p>
             <ul>
-                <li>Design three arthroscopic instruments from concept through functional prototypes</li>
-                <li>Collaborate with surgeons to understand clinical needs and iterate based on feedback</li>
-                <li>Conduct FEA and mechanical testing to validate designs</li>
-                <li>Document all work per FDA design controls and ISO 13485 requirements</li>
+                <li>Ideate design concepts for solving clinical problem</li>
+                <li>Manufacture and present prototypes</li>
+                <li>Iterate and improve based on surgeon and engineer feedback</li>
+                <li>Work on V&V paperwork for matrix sternum product line</li>
             </ul>
 
-            <p><strong>What I Learned:</strong> How to design for surgeons (not engineers), how to fail fast with cheap prototypes before committing to expensive tooling, and how FDA design controls actually work in practice. I designed three instruments from concept through functional prototypes, working directly with surgeons to understand what they needed and why existing tools weren't good enough.</p>
-
-            <p><strong>The Reality Check:</strong> Most of my "brilliant" first designs were immediately shot down by surgeons. "This would be impossible to use with one hand." "The angle is wrong for how we actually approach the joint." I learned more from those failures than any textbook could teach.</p>
+            <p><strong>Challenges:</strong> The core challenge was being able to grab the plate and drill a hole through it while keeping the number of components low and keep the device able to work through a 15 mm portal incision. The other challenge was completing all concepts before the end of my 6 month co-op.</p>
 
             <p><strong>Technical Details:</strong> SolidWorks and Creo for CAD, FEA for stress analysis, worked with machine shops and contract manufacturers, conducted mechanical testing, documented everything per FDA design controls.</p>
 
@@ -553,42 +726,52 @@
 
         <div class="project">
             <h3>Transtibial Prosthetic Design & Gait Analysis</h3>
-            <div class="project-meta">Limber Prosthetics | Dec 2022 - July 2024</div>
+            <div class="project-meta"><a href="https://limberprosthetics.com" target="_blank">Limber Prosthetics</a> | Dec 2022 - July 2024</div>
             
             <div class="project-image">[Replace with: Gait analysis setup or prosthetic CAD model]</div>
 
-            <p><strong>The Mission:</strong> Make advanced prosthetics accessible. Limber's approach was to use parametric design and modern manufacturing to create custom prosthetics at a fraction of traditional costs.</p>
+            <p><strong>The Problems:</strong></p>
+            <ol>
+                <li>It takes our in-house orthotics clinicians too long to design our 3D printed prosthetics to be fully customized to each patient. The results between patients were also not standardized and there was not patient specific features added in.</li>
+                <li>Getting kinematics of our prosthetic vs our competitors' prosthetics. We had to get the OpenCap platform set up for our clinical publishing trial to evaluate the performance of our leg.</li>
+            </ol>
+
+            <p><strong>What I Built:</strong> I designed a prosthetic design suite that allows the auto-alignment of the socket design to the ankle foot and the automatic pylon scaling and integration. This allowed the orthotics clinician to easily visualize, modify parameters (adduction, abduction, etc.) in a quantifiable manner and cut design time by ~50% and ensure consistency between patients.</p>
+            
+            <p>In addition, I created a parametric model and patient specific relationship model that relates the patient parameters (i.e. height, weight, activity level, etc.) to produce a custom prosthetic that optimizes various features and dimensions rather than simply scaling the foot ankle and pylon.</p>
+            
+            <p>I also designed a generative design workflow that utilized topology optimization to generate entirely new pylons for each patient that allows for fully customized prosthetics for each patient that correctly loads the patient's socket and diverts the loading away from the tibial head and disperses it evenly throughout the socket to reduce pain in the residual limb.</p>
+            
+            <p>Finally, I built the testing procedure, Python data analysis pipelines for analyzing the clinical trial that used OpenCap kinematics data and converts it into an easy to understand data set that can be interpreted by the clinician to back propagate into improving prosthetics designs as well as verify non-inferiority with our competitors.</p>
 
             <p><strong>Key Responsibilities:</strong></p>
             <ul>
-                <li>Build data pipeline for clinical trials to process gait analysis from 10-20 patients</li>
-                <li>Develop parametric CAD models that automatically adjust geometry based on patient scans</li>
-                <li>Create analysis tools to quantify walking patterns and prosthetic performance</li>
-                <li>Establish protocols aligned with ISO 22675 standards for prosthetic testing</li>
+                <li>Automate clinician workflows to reduce time for designing</li>
+                <li>Automate patient specific prosthetic design</li>
+                <li>Standardize and outline SOP for kinematics data collection and data processing</li>
             </ul>
 
-            <p><strong>My Role:</strong> I built the data pipeline for their clinical trials, processing gait analysis data from 10 to 20 patients to evaluate prosthetic performance. This meant instrumenting patients with sensors, collecting biomechanical data, and developing Python tools to analyze walking patterns and quantify improvements.</p>
-
-            <p><strong>What Worked:</strong> Created parametric CAD models that could automatically adjust geometry based on patient scans. Built analysis tools that reduced data processing time from 4 hours to 30 minutes per patient; these tools are still in use at Limber today.</p>
-
-            <p><strong>Technical Details:</strong> Python for data analysis, SolidWorks for parametric prosthetic design, developed protocols aligned with ISO 22675 standards for prosthetic testing.</p>
+            <p><strong>Challenges:</strong> The core challenge was taking preexisting designs and patient parameters and matching them to features in the prosthetic design that can be optimized for that specific patient. This was a challenge that combined gait kinematics research, clinician experience, and mathematical modeling that was difficult to validate and implement. I spent most of my time at the company working on this issue. Lots of it is proprietary that I cannot share due to an NDA.</p>
 
             <div class="skills">
+                <span class="skill-tag">nTopology</span>
                 <span class="skill-tag">Python</span>
-                <span class="skill-tag">Gait Analysis</span>
-                <span class="skill-tag">Parametric CAD</span>
-                <span class="skill-tag">Clinical Testing</span>
-                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">OpenCap</span>
+                <span class="skill-tag">Parametric Design</span>
+                <span class="skill-tag">Fusion 360</span>
+                <span class="skill-tag">Biomechanics</span>
             </div>
         </div>
 
         <div class="project">
             <h3>EMG-Controlled Prosthetic Hand</h3>
-            <div class="project-meta">UCSD Biomedical Engineering Society | Oct 2022 - May 2023</div>
+            <div class="project-meta"><a href="https://bmesatucsd.org" target="_blank">UCSD Biomedical Engineering Society</a> | Oct 2022 - May 2023</div>
             
             <div class="project-image">[Replace with: Prosthetic hand prototype or team photo]</div>
 
-            <p><strong>The Challenge:</strong> Lead a team of four students to build a functional myoelectric prosthetic hand for the BMES design competition. We had limited budget, limited time, and ambitious goals.</p>
+            <p><strong>The Problem:</strong> A cheap prosthetic hand that has touch sensor integration and control via EMG. It is rather trivial to design a prosthetic hand but successfully integrating the prosthetic with the human body is the core challenge.</p>
+
+            <p><strong>What I Built:</strong> Working with a team of 4, we troubleshot using EMG sensors to close and open the prosthetic hand and give touch feedback to the user using actuators inside the socket. We used an electrical filtering system and integrated it with an Arduino and low voltage amplifier to operate the prosthetic hand.</p>
 
             <p><strong>Key Responsibilities:</strong></p>
             <ul>
@@ -598,15 +781,12 @@
                 <li>Integrate sensors and develop signal processing algorithms for muscle activation</li>
             </ul>
 
-            <p><strong>What We Built:</strong> A 3D-printed prosthetic hand controlled by EMG signals from the user's forearm muscles. Flex your muscle, servos actuate the fingers. Simple in concept, nightmarish in execution.</p>
-
-            <p><strong>The Problems:</strong> EMG signals are noisy. Really noisy. Getting clean muscle activation signals while filtering out electrical interference and motion artifacts required multiple iterations of signal processing algorithms. We also had to solve mechanical challenges; making finger joints strong enough to grip objects but light enough for the servos to move quickly.</p>
-
-            <p><strong>What I Learned:</strong> How to lead a technical team, how to divide tasks among people with different skill levels, and how to ship something functional even when it's not perfect. We got it working well enough to demonstrate at the competition, even if it occasionally did weird things.</p>
+            <p><strong>Core Challenge:</strong> Using EMG signals is hard, noisy, and difficult to differentiate. EMG signals are inherently inconsistent because they pick up electrical noise from muscles, skin movement, and environmental interference. We spent most of our time working with the electronics and programming to process the EMG signal and ensure its quality and usability. This involved implementing multiple filtering stages including high-pass filters to remove motion artifacts, low-pass filters to remove high-frequency noise, and notch filters to eliminate 60 Hz power line interference. We also had to develop adaptive thresholding algorithms that could distinguish between intentional muscle contractions and background noise, which varied significantly between users and even throughout a single testing session. Getting the signal processing robust enough to reliably detect muscle activation patterns while filtering out interference required extensive iteration and testing with different electrode placements and amplifier configurations.</p>
 
             <div class="skills">
                 <span class="skill-tag">Arduino</span>
                 <span class="skill-tag">EMG Signal Processing</span>
+                <span class="skill-tag">Electrical Filtering</span>
                 <span class="skill-tag">Servo Control</span>
                 <span class="skill-tag">3D Printing</span>
                 <span class="skill-tag">Team Leadership</span>
@@ -615,83 +795,114 @@
 
         <div class="project">
             <h3>3D Printing Vessels and Surgery Training Setup</h3>
-            <div class="project-meta">[Add your dates here]</div>
+            <div class="project-meta"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Laboratory</a>, UC San Diego | Jan 2024 - Present</div>
             
             <div class="project-image">[Add your image here]</div>
 
-            <p><strong>The Problem:</strong> [Fill in what problem you were solving]</p>
+            <p><strong>The Problem:</strong> Allographic vessels cause donor site challenges and complicate procedures. Current commercial vessels are acellular, mechanically different than vessels, and difficult to work with. In addition, microsurgery training devices are expensive, do not adequately mimic surgical environments, and single use.</p>
 
-            <p><strong>What I Built:</strong> [Fill in what you built]</p>
+            <p><strong>What I Built:</strong></p>
+            <ol>
+                <li>I worked on the mechanical testing of the vessels with burst pressure and tensile testing</li>
+                <li>I worked on the design of a microsurgery testing suite that allows surgical trainees to have continuous flow through a vessel while practicing vessel anastomosis</li>
+                <li>Design bioink for mimicking vascular adhesions (adventitia)</li>
+            </ol>
 
             <p><strong>Key Responsibilities:</strong></p>
             <ul>
-                <li>[Add responsibility 1]</li>
-                <li>[Add responsibility 2]</li>
-                <li>[Add responsibility 3]</li>
+                <li>Design training suite for microsurgery practice with continuous flow capabilities</li>
+                <li>Design and execute testing procedures for mechanical characterization of 3D printed vessels</li>
+                <li>Develop bioink formulation and production procedure for adventitia bioink that mimics vascular adhesions</li>
             </ul>
 
-            <p><strong>The Hard Parts:</strong> [Fill in challenges you faced]</p>
-
-            <p><strong>Technical Details:</strong> [Fill in technical details, tools used, etc.]</p>
+            <p><strong>Challenges:</strong> Creating biomaterial for adventitia was very challenging as its properties are unique and are very important for manipulating the vessels without damaging them. The properties were very elastic but needed to be distinct to the vessel itself but they need to work together. Took a lot of iterations and improvements to the curing process and formulation.</p>
 
             <div class="skills">
-                <span class="skill-tag">[Skill 1]</span>
-                <span class="skill-tag">[Skill 2]</span>
-                <span class="skill-tag">[Skill 3]</span>
+                <span class="skill-tag">Biomaterial Design</span>
+                <span class="skill-tag">Cell Culture</span>
+                <span class="skill-tag">Mechanical Testing</span>
+                <span class="skill-tag">Burst Pressure Testing</span>
+                <span class="skill-tag">CAD</span>
+                <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Microsurgery</span>
             </div>
         </div>
-    </section>
 
-    <section id="experience">
-        <h2>Experience</h2>
+        <div class="project">
+            <h3>Mouse Biomechanics Data Acquisition</h3>
+            <div class="project-meta"><a href="https://cmrg.ucsd.edu" target="_blank">Cardiac Mechanics Research Group</a>, UC San Diego | Sep 2023 - Dec 2023</div>
+            
+            <div class="project-image">[Add your image here]</div>
 
-        <div class="experience-item">
-            <h3>R&D Co-op</h3>
-            <div class="experience-meta">DePuy Synthes | Johnson & Johnson | Jan 2025 - June 2025</div>
+            <p><strong>The Problem:</strong> We wanted to get force plate data synced with video data of the mice that are lifting weights.</p>
+
+            <p><strong>What We Built:</strong> LabVIEW code base and SOP for operating a testing setup with NI DAQ system.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
             <ul>
-                <li>Designed three arthroscopic surgical instruments from concept through functional prototypes</li>
-                <li>Collaborated with surgeons and cross-functional teams to refine designs based on clinical feedback</li>
-                <li>Conducted FEA and mechanical testing to validate design outputs</li>
-                <li>Documented all work per FDA design controls and ISO 13485</li>
+                <li>Program data acquisition system for collecting, syncing, and storing data</li>
+                <li>Train grad student researchers on system operation</li>
             </ul>
+
+            <p><strong>Challenge:</strong> Force plates and video data were high throughput and we wanted to display them as the data was coming in as well as write to the data files. Was hard to work with dynamic data types and was time consuming modifying the NI built-in LabVIEW code.</p>
+
+            <div class="skills">
+                <span class="skill-tag">LabVIEW</span>
+                <span class="skill-tag">NI DAQ</span>
+                <span class="skill-tag">Data Acquisition</span>
+                <span class="skill-tag">Signal Processing</span>
+            </div>
         </div>
 
-        <div class="experience-item">
-            <h3>Undergraduate Researcher</h3>
-            <div class="experience-meta">Chen Laboratory, UC San Diego | Oct 2023 - Present</div>
+        <div class="project">
+            <h3>Proteoglycan Extraction & Cartilage Tissue Engineering</h3>
+            <div class="project-meta">CTE Lab, UC San Diego | Sep 2025 - Present</div>
+            
+            <div class="project-image">[Add your image here]</div>
+
+            <p><strong>The Problem:</strong> Cartilage tissue engineering requires precise proteoglycan content and distribution within hydrogel scaffolds. Existing methods lack standardization and quantification protocols for proteoglycan extraction and integration.</p>
+
+            <p><strong>What I'm Building:</strong> Standardized proteoglycan extraction protocols, hydrogel synthesis methods, and a bioreactor system for hydroxyapatite double diffusion reaction between scaffold and collagen hydrogel.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
             <ul>
-                <li>Designed and built arthroscopic bioprinting device for minimally invasive tendon repair</li>
-                <li>Developed fluidic systems, integrated electronics and firmware, characterized performance</li>
-                <li>First author on manuscript in preparation, patent pending</li>
+                <li>Standardize proteoglycan extraction protocols and develop quantification methods</li>
+                <li>Optimize hydrogel formulation for cell viability and proteoglycan integration</li>
+                <li>Design bioreactor for double diffusion reaction of hydroxyapatite between scaffold and collagen hydrogel</li>
+                <li>Document all procedures and maintain detailed experimental records</li>
+                <li>Conduct cell viability studies across various hydrogel formulations</li>
             </ul>
+
+            <p><strong>Challenges:</strong> Maintaining consistent proteoglycan yield across extractions while preserving biological activity. Designing a bioreactor that enables controlled double diffusion while maintaining sterility and appropriate environmental conditions for tissue development.</p>
+
+            <div class="skills">
+                <span class="skill-tag">Proteoglycan Extraction</span>
+                <span class="skill-tag">Hydrogel Synthesis</span>
+                <span class="skill-tag">Bioreactor Design</span>
+                <span class="skill-tag">Cell Viability Testing</span>
+                <span class="skill-tag">Biomaterial Formulation</span>
+                <span class="skill-tag">Documentation</span>
+            </div>
         </div>
 
-        <div class="experience-item">
-            <h3>R&D Intern</h3>
-            <div class="experience-meta">Limber Prosthetics | Dec 2022 - July 2024</div>
-            <ul>
-                <li>Built Python data analysis pipelines for clinical gait analysis</li>
-                <li>Developed parametric CAD models for patient-specific prosthetic design</li>
-                <li>Created protocols aligned with ISO 22675 standards</li>
-            </ul>
-        </div>
+        <div class="project">
+            <h3>Liver Tissue Engineering & Bioreactor (Coming Soon)</h3>
+            <div class="project-meta"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Laboratory</a>, UC San Diego | Feb 2026 - Present</div>
+            
+            <div class="project-image">[Coming soon]</div>
 
-        <div class="experience-item">
-            <h3>Programming Sub-Lead</h3>
-            <div class="experience-meta">UCSD Biomedical Engineering Society | Oct 2022 - May 2023</div>
-            <ul>
-                <li>Led 4-person team developing EMG-controlled prosthetic hand</li>
-                <li>Programmed Arduino control system, integrated sensors and servo motors</li>
-            </ul>
-        </div>
+            <p><strong>The Project:</strong> Developing a bioreactor system for imaging and testing engineered liver tissue that will be implanted in a rat model. Just joined this project last week.</p>
 
-        <div class="experience-item">
-            <h3>VEX Robotics World Champion</h3>
-            <div class="experience-meta">2015 - 2022</div>
-            <ul>
-                <li>Seven years of competitive robotics culminating in world championship victory (2022)</li>
-                <li>Designed, built, and programmed competition robots</li>
-            </ul>
+            <p><strong>Current Focus:</strong> Bioreactor design for real-time imaging and functional testing of liver constructs before implantation.</p>
+
+            <p><strong>More details coming soon as the project develops.</strong></p>
+
+            <div class="skills">
+                <span class="skill-tag">Bioreactor Design</span>
+                <span class="skill-tag">Tissue Engineering</span>
+                <span class="skill-tag">Live Imaging</span>
+                <span class="skill-tag">In Vivo Models</span>
+            </div>
         </div>
     </section>
 
@@ -702,7 +913,7 @@
             <div class="experience-meta">University of California San Diego | Graduating June 2026</div>
             <ul>
                 <li>3.78 GPA, Provost Honors</li>
-                <li>Relevant Coursework: Bioprocessing, Tissue Engineering, Biomechanics, Molecular Biology</li>
+                <li><strong>Relevant Coursework:</strong> <strong>Bioprocessing & Bioprocess Engineering</strong>, <strong>Tissue Engineering</strong>, <strong>Biomechanics</strong>, <strong>Molecular Biology</strong>, <strong>Cell Bioengineering</strong>, <strong>Biomaterials</strong>, <strong>Bioreactor Design</strong>, Recombinant DNA Technology, Biomedical Devices, Biochemistry, Organic Chemistry, Physiology, Medical Device Design, Engineering Mechanics, Thermodynamics, Fluid Mechanics, Materials Science, Differential Equations, Linear Algebra, Probability and Statistics</li>
             </ul>
         </div>
     </section>
