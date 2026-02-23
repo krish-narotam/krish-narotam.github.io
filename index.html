@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krish Narotam - Biomedical Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #f9f9f9;
+            display: flex;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header/Cover Section */
+        .header-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: #fff;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .cover-photo {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .cover-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .header-section h1 {
+            font-size: 48px;
+            font-weight: normal;
+            margin-bottom: 16px;
+            color: #000;
+        }
+
+        .header-section .subtitle {
+            font-size: 18px;
+            color: #0066cc;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .intro-brief {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .intro-brief p {
+            margin-bottom: 16px;
+        }
+
+        /* Simple Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 200px;
+            right: 0;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px 40px;
+        }
+
+        .sticky-header.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sticky-header-inner-wrapper {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .sticky-header-content {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .sticky-header h1 {
+            font-weight: normal;
+            margin: 0;
+            color: #000;
+            white-space: nowrap;
+        }
+
+        .sticky-header .subtitle {
+            font-size: 14px;
+            color: #0066cc;
+            margin-left: 20px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            left: 100%;
+            margin-left: 20px;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 200px;
+            background: #fff;
+            padding: 60px 20px 40px 20px;
+            overflow-y: auto;
+        }
+
+        nav a {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #000;
+            padding: 8px 12px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            text-decoration: none;
+            border-left-color: #0066cc;
+            background: #f5f5f5;
+        }
+
+        nav a.active {
+            border-left-color: #0066cc;
+            background: #e6f2ff;
+            color: #0066cc;
+        }
+
+        /* Project sub-navigation */
+        .project-subnav {
+            max-height: 0;
+            overflow: hidden;
+            margin-left: 10px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s ease,
+                        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-subnav.visible {
+            max-height: 400px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-subnav a {
+            font-size: 12px;
+            color: #0066cc;
+            font-style: italic;
+            padding: 5px 12px;
+            margin-bottom: 5px;
+            display: block;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .project-subnav a:hover {
+            background: #f0f8ff;
+        }
+
+        .project-subnav a.active-project {
+            background: #f0f0f0;
+            border-left-color: #0066cc;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 200px;
+            flex: 1;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        section {
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 2px dotted #d0d8e0;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            color: #000;
+        }
+
+        .intro {
+            margin-bottom: 40px;
+        }
+
+        .intro p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .objective {
+            font-style: italic;
+            color: #0066cc;
+            margin-bottom: 20px;
+            font-size: 18px;
+            padding-left: 20px;
+        }
+
+        .project {
+            margin-bottom: 60px;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .project h3 {
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 8px;
+            color: #0066cc;
+        }
+
+        .project-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .project p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .skill-tag {
+            background: #e6f2ff;
+            padding: 6px 14px;
+            font-size: 13px;
+            color: #0066cc;
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 16px;
+            background: #f9f9f9;
+        }
+
+        .experience-item h3 {
+            font-size: 18px;
+            font-weight: normal;
+            margin-bottom: 4px;
+            color: #0066cc;
+        }
+
+        .experience-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .experience-item li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 120px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #0066cc;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .timeline-date {
+            width: 110px;
+            text-align: right;
+            font-size: 13px;
+            color: #666;
+            font-weight: normal;
+            padding-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0066cc;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #0066cc;
+        }
+
+        .timeline-title {
+            font-weight: normal;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title a {
+            color: #0066cc;
+        }
+
+        .timeline-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-date {
+                width: 100%;
+                text-align: left;
+                padding-right: 0;
+                padding-left: 30px;
+                margin-bottom: 5px;
+            }
+
+            .timeline-content {
+                padding-left: 30px;
+            }
+
+            .timeline-content::before {
+                left: -16px;
+            }
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dotted #d0d8e0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-links {
+            margin: 20px 0;
+        }
+
+        .contact-links a {
+            margin-right: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 8px 16px;
+            background: #e6f2ff;
+            color: #0066cc;
+        }
+
+        .contact-links a:hover {
+            background: #0066cc;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .content-wrapper {
+                border-left: none;
+                border-right: none;
+            }
+
+            .mobile-nav {
+                display: block;
+                background: #fff;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .dynamic-header {
+                left: 0;
+            }
+
+            .dynamic-header h1 {
+                font-size: 32px !important;
+            }
+
+            .dynamic-header.stuck h1 {
+                font-size: 20px !important;
+            }
+
+            .dynamic-header .subtitle {
+                display: none;
+            }
+
+            .cover-photo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .header-section h1 {
+                font-size: 36px;
+            }
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Simple Sticky Header -->
+    <div class="sticky-header" id="stickyHeader">
+        <div class="sticky-header-inner-wrapper">
+            <div class="sticky-header-content" id="stickyHeaderContent">
+                <h1>Krish Narotam</h1>
+                <span class="subtitle">R&D Engineer</span>
+            </div>
+        </div>
+    </div>
+    <!-- Sticky Navigation -->
+    <nav>
+        <a href="#top" data-section="top">Home</a>
+        <a href="#about" data-section="about">About</a>
+        <a href="#professional-profile" data-section="professional-profile">Professional Profile</a>
+        <a href="#projects" data-section="projects">Projects</a>
+        <div class="project-subnav" id="projectSubnav">
+            <a href="#project-bioprinter">Arthroscopic Bioprinter</a>
+            <a href="#project-depuy">Surgical Instruments</a>
+            <a href="#project-limber">Prosthetic Design</a>
+            <a href="#project-bmes">EMG Prosthetic Hand</a>
+            <a href="#project-vessels">3D Printed Vessels</a>
+            <a href="#project-mouse">Mouse Biomechanics</a>
+            <a href="#project-cte">Proteoglycan Extraction</a>
+            <a href="#project-liver">Liver Bioreactor</a>
+        </div>
+        <a href="#education" data-section="education">Education</a>
+        <a href="#contact" data-section="contact">Contact</a>
+        <div style="margin: 20px 0; padding-top: 20px; border-top: 2px dotted #d0d8e0;"></div>
+        <a href="essays.html" style="color: #0066cc;">Essays & Writing →</a>
+    </nav>
+
+    <!-- Mobile Navigation (shows on small screens) -->
+    <div class="mobile-nav">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#professional-profile">Professional Profile</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <!-- Header Section (replaces full-page cover) -->
+            <div class="header-section" id="top">
+                <div class="cover-photo">
+                    <img src="profile-photo.jpg" alt="Krish Narotam">
+                </div>
+                <h1>Krish Narotam</h1>
+                <div class="subtitle">Biomedical Engineer | Tissue Engineering & Medical Device R&D</div>
+                <div class="intro-brief">
+                    <p>UCSD bioengineering graduate (June 2026) with industry R&D experience in rapid prototyping and medical device development. Background spans robotics, prosthetics, surgical instruments, and tissue 3D printing.</p>
+                    <p>Seeking R&D engineering roles at the intersection of hardware and tissue/molecular engineering.</p>
+                </div>
+            </div>
+            <section id="about">
+                <h2>About</h2>
+                <div class="intro">
+                    <p class="objective">Life objective: Leave the world better than I found it.</p>
+            
+            <p>For as long as I can remember, I've wanted to help people and design cool things. If something wasn't both, I wasn't interested. I spent my childhood building LEGOs, sandcastles, and creating art—always driven to make things. In middle school, I discovered competitive robotics. Seven years later, my team won the world championship.</p>
+
+            <p>After high school, I didn't want to just continue with mechanical engineering. I wanted to learn new things, grow my skills, and help people. That's why I went into bioengineering with a focus on biotechnology. It was outside my wheelhouse—pharmaceuticals, bioreactors, gene editing—nothing like robotics.</p>
+
+            <p>I found myself dabbling everywhere: fully 3D-printed prosthetic hands and feet, mouse kinematics data acquisition, tissue 3D printing, internal rib fixation. I tried to learn as much as I could and figure out what I really wanted to make—how I wanted to make the world better.</p>
+
+            <p>I didn't find interest in just robotics, just cell engineering, or just tissue engineering. What I found most interesting is how they all combine to create a single product, a single tool to help someone's life.</p>
+
+            <p>After this wide range of experiences, I realized I'm driven to build at the intersection of the molecular and mechanical. I want to build tools, devices, and instruments that work with biology to truly affect people and change lives. That's what I'm building now: an arthroscopic bioprinter that combines robotics, tissue engineering, and surgical instrumentation to repair tendons during surgery. It's exactly the kind of convergence that excites me—mechanical precision meeting biological complexity to solve real clinical problems.</p>
+        </div>
+    </section>
+
+    <section id="professional-profile">
+        <h2>Professional Profile</h2>
+        
+        <div class="intro">
+            <p><strong>Overview:</strong></p>
+            <p>R&D engineer with experience in prosthetics, tissue 3D printing, surgical tool design, and robotics. Specific expertise in rapidly taking ideas from early concepts to working prototypes in the order of months.</p>
+            
+            <p>Career foundation in robotics and mechanical engineering but studied biomedical technologies like bioreactor design, biomaterials, recombinant DNA, and cell bioengineering.</p>
+            
+            <p>Interested in the intersection between medtech and tissue/molecular engineering to build products and services that heal people.</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>Career Timeline & Key Takeaways</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2015 - 2022</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Competition Robotics (VEX)</div>
+                        <div class="timeline-text">World championship victory, built foundation in CAD, fabrication, and rapid iteration.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2022 - Jul 2024</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://limberprosthetics.com" target="_blank">Limber Prosthetics</a></div>
+                        <div class="timeline-text">Automated clinician workflows and built gait analysis pipelines, learned user-centered design.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2022 - May 2023</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://bmesatucsd.org" target="_blank">UCSD BMES</a> Prosthetic Hand</div>
+                        <div class="timeline-text">Led EMG-controlled prosthetic team, mastered signal processing and team leadership.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2023 - Dec 2023</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://cmrg.ucsd.edu" target="_blank">CMRG</a> Mouse Biomechanics</div>
+                        <div class="timeline-text">Built LabVIEW data acquisition system, learned to work with existing codebases.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2023 - Present</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Lab</a> Arthroscopic Bioprinter</div>
+                        <div class="timeline-text">Leading device development, integrating surgeon feedback, and mentoring team members.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2024 - Present</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Lab</a> 3D Printed Vessels</div>
+                        <div class="timeline-text">Developing vessel biomaterials and microsurgery training devices through iterative testing.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2025 - Jun 2025</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"><a href="https://www.jnjmedtech.com/en-US/companies/depuy-synthes" target="_blank">DePuy Synthes</a> (J&J)</div>
+                        <div class="timeline-text">Designed rib fixation instruments, learned FDA design controls and design for manufacturing.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2025 - Present</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">CTE Lab, UCSD</div>
+                        <div class="timeline-text">Leading proteoglycan extraction and hydrogel synthesis for cartilage tissue engineering, designing bioreactor systems.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px;"><strong>Key Skills Used Daily:</strong> SolidWorks/Fusion 360 for CAD, Python for automation and analysis, Arduino/C++ for hardware integration, cell culture and biomaterial formulation, mechanical testing and characterization, presenting to stakeholders, mentoring team members.</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>Technical Skills:</h3>
+            
+            <p><strong>Design & CAD:</strong> SolidWorks (5+ projects, advanced assemblies), Creo Parametric, Fusion 360, parametric design, GD&T, DFM/DFA principles, tolerance analysis, nTopology</p>
+            
+            <p><strong>Prototyping & Fabrication:</strong> 3D printing (FDM, SLA, multi-material), CNC machining, injection molding, laser cutting, rapid prototyping, benchtop testing</p>
+            
+            <p><strong>Analysis & Testing:</strong> FEA simulation, mechanical characterization, burst pressure testing, flow rate analysis, mechanical testing protocols, Design of Experiments</p>
+            
+            <p><strong>Programming & Electronics:</strong> Python, C++, MATLAB, Arduino, Raspberry Pi, sensor integration, motor control, EMG signal processing, PCB design, LabVIEW, NI DAQ</p>
+            
+            <p><strong>Bioengineering:</strong> Cell culture (mammalian cells), sterile technique, bioprinting, bioreactor design, biomaterials, hydrogel formulation, fiber optics, molecular biology, recombinant DNA</p>
+            
+            <p><strong>Medical Devices:</strong> FDA design controls, ISO 13485, Design History File documentation, risk analysis, V&V protocols, surgical instrument design, anatomical modeling</p>
+            
+            <p><strong>Data Analysis:</strong> Statistical analysis, Python (pandas, numpy, matplotlib), MATLAB, data visualization, experimental design, OpenCap kinematics</p>
+            
+            <p><strong>Soft Skills:</strong> Cross-functional collaboration, technical communication, mentoring junior engineers, surgeon/clinician interaction, presenting to stakeholders, project management, rapid iteration, problem-solving under constraints</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="project" id="project-bioprinter">
+            <h3>Arthroscopic Bioprinter for Tendon Repair</h3>
+            <div class="project-meta"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Laboratory</a>, UC San Diego | Oct 2023 - Present</div>
+            
+            <div class="project-image">[Replace with: Bioprinter prototype photo]</div>
+
+            <p><strong>The Problem:</strong> Tendon injuries, especially rotator cuff tears, have poor healing outcomes because it's nearly impossible to deliver cells and growth factors directly to the injury site during minimally invasive surgery.</p>
+
+            <p><strong>What I Built:</strong> A minimally invasive 3D printing device that allows surgeons to deposit a wide variety of biomaterials into the wound site. Designed the entire device from the ground up and the overarching concept for implantation side. Created the first generation prototype and designed, manufactured, assembled, and programmed the hardware integration of the electronics system.</p>
+            
+            <p>Worked on optimizing biomaterial candidates for strength, biocompatibility, injectability, and reliability in implementation. Worked on a double network hydrogel with UV curing to produce a biologically compatible implant. Also had to standardize the mechanical testing of the hydrogels as well as conduct cell viability studies with variety of printing conditions.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Bring device from concept to working prototype</li>
+                <li>Present to surgeons and use feedback to improve design</li>
+                <li>Mentor other students in team to speed up processes</li>
+            </ul>
+
+            <p><strong>Challenges:</strong> The most difficult challenge was working within the preexisting minimally invasive workflows. We wanted to keep the device working with the middle to low end of arthroscopic portals, so getting everything compact and manufacturable in a basic makerspace was a difficult challenge that is constantly improved and worked on.</p>
+            
+            <p>Another major challenge was ensuring biocompatibility while curing the hydrogels rapidly and with a high enough yield for strength and energy absorption. Had to learn and apply free radical polymerization theory to improve yield, molecular weight of polymer chains, and reduce cure time.</p>
+            
+            <p>Other challenges included getting everything into a hand held device, fully enclosed, and keeping the controls simple and reliable.</p>
+
+            <p><strong>Technical Details:</strong> Designed mechanical systems in SolidWorks and Fusion 360, integrated Arduino-based control for stepper motors and UV LED timing, characterized flow rates and burst pressure, performed cell viability testing. Currently preparing manuscript as first author and have a patent pending.</p>
+
+            <div class="skills">
+                <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Fusion 360</span>
+                <span class="skill-tag">Arduino/C++</span>
+                <span class="skill-tag">PCB Design</span>
+                <span class="skill-tag">Fiber Optics</span>
+                <span class="skill-tag">Fluidics</span>
+                <span class="skill-tag">Cell Culture</span>
+                <span class="skill-tag">Biomaterial Design</span>
+                <span class="skill-tag">3D Printing</span>
+            </div>
+        </div>
+
+        <div class="project" id="project-depuy">
+            <h3>Surgical Instruments for Arthroscopic Surgery</h3>
+            <div class="project-meta"><a href="https://www.jnjmedtech.com/en-US/companies/depuy-synthes" target="_blank">DePuy Synthes</a> (Johnson & Johnson) | Jan 2025 - June 2025</div>
+            
+            <div class="project-image">[Replace with: CAD model or prototype photo from DePuy]</div>
+
+            <p><strong>The Problem:</strong> Rib fixation is rarely done as it is a very invasive surgery and minimally invasive products are difficult to use, have low adoption, and mechanically unsound. Rib fractures are a common comorbidity as patients are unable to breathe deeply and has been related to pneumonia and other breathing based illnesses.</p>
+
+            <p><strong>What I Built:</strong> 3 minimally invasive arthroscopic devices to enter the chest cavity through a ~15 mm incision, hold onto a chest wall contoured plate, align the plate with the chest wall, enable the drilling and screwing of a locking screw into the plate across the fracture. Developed concepts for an arthroscopic grasper, tendon driven mechanism, and suture passing mechanism.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Ideate design concepts for solving clinical problem</li>
+                <li>Manufacture and present prototypes</li>
+                <li>Iterate and improve based on surgeon and engineer feedback</li>
+                <li>Work on V&V paperwork for matrix sternum product line</li>
+            </ul>
+
+            <p><strong>Challenges:</strong> The core challenge was being able to grab the plate and drill a hole through it while keeping the number of components low and keep the device able to work through a 15 mm portal incision. The other challenge was completing all concepts before the end of my 6 month co-op.</p>
+
+            <p><strong>Technical Details:</strong> SolidWorks and Creo for CAD, FEA for stress analysis, worked with machine shops and contract manufacturers, conducted mechanical testing, documented everything per FDA design controls.</p>
+
+            <div class="skills">
+                <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Creo</span>
+                <span class="skill-tag">FEA</span>
+                <span class="skill-tag">Prototyping</span>
+                <span class="skill-tag">FDA Design Controls</span>
+                <span class="skill-tag">DFM</span>
+            </div>
+        </div>
+
+        <div class="project" id="project-limber">
+            <h3>Transtibial Prosthetic Design & Gait Analysis</h3>
+            <div class="project-meta"><a href="https://limberprosthetics.com" target="_blank">Limber Prosthetics</a> | Dec 2022 - July 2024</div>
+            
+            <div class="project-image">[Replace with: Gait analysis setup or prosthetic CAD model]</div>
+
+            <p><strong>The Problems:</strong></p>
+            <ol>
+                <li>It takes our in-house orthotics clinicians too long to design our 3D printed prosthetics to be fully customized to each patient. The results between patients were also not standardized and there was not patient specific features added in.</li>
+                <li>Getting kinematics of our prosthetic vs our competitors' prosthetics. We had to get the OpenCap platform set up for our clinical publishing trial to evaluate the performance of our leg.</li>
+            </ol>
+
+            <p><strong>What I Built:</strong> I designed a prosthetic design suite that allows the auto-alignment of the socket design to the ankle foot and the automatic pylon scaling and integration. This allowed the orthotics clinician to easily visualize, modify parameters (adduction, abduction, etc.) in a quantifiable manner and cut design time by ~50% and ensure consistency between patients.</p>
+            
+            <p>In addition, I created a parametric model and patient specific relationship model that relates the patient parameters (i.e. height, weight, activity level, etc.) to produce a custom prosthetic that optimizes various features and dimensions rather than simply scaling the foot ankle and pylon.</p>
+            
+            <p>I also designed a generative design workflow that utilized topology optimization to generate entirely new pylons for each patient that allows for fully customized prosthetics for each patient that correctly loads the patient's socket and diverts the loading away from the tibial head and disperses it evenly throughout the socket to reduce pain in the residual limb.</p>
+            
+            <p>Finally, I built the testing procedure, Python data analysis pipelines for analyzing the clinical trial that used OpenCap kinematics data and converts it into an easy to understand data set that can be interpreted by the clinician to back propagate into improving prosthetics designs as well as verify non-inferiority with our competitors.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Automate clinician workflows to reduce time for designing</li>
+                <li>Automate patient specific prosthetic design</li>
+                <li>Standardize and outline SOP for kinematics data collection and data processing</li>
+            </ul>
+
+            <p><strong>Challenges:</strong> The core challenge was taking preexisting designs and patient parameters and matching them to features in the prosthetic design that can be optimized for that specific patient. This was a challenge that combined gait kinematics research, clinician experience, and mathematical modeling that was difficult to validate and implement. I spent most of my time at the company working on this issue. Lots of it is proprietary that I cannot share due to an NDA.</p>
+
+            <div class="skills">
+                <span class="skill-tag">nTopology</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">OpenCap</span>
+                <span class="skill-tag">Parametric Design</span>
+                <span class="skill-tag">Fusion 360</span>
+                <span class="skill-tag">Biomechanics</span>
+            </div>
+        </div>
+
+        <div class="project" id="project-bmes">
+            <h3>EMG-Controlled Prosthetic Hand</h3>
+            <div class="project-meta"><a href="https://bmesatucsd.org" target="_blank">UCSD Biomedical Engineering Society</a> | Oct 2022 - May 2023</div>
+            
+            <div class="project-image">[Replace with: Prosthetic hand prototype or team photo]</div>
+
+            <p><strong>The Problem:</strong> A cheap prosthetic hand that has touch sensor integration and control via EMG. It is rather trivial to design a prosthetic hand but successfully integrating the prosthetic with the human body is the core challenge.</p>
+
+            <p><strong>What I Built:</strong> Working with a team of 4, we troubleshot using EMG sensors to close and open the prosthetic hand and give touch feedback to the user using actuators inside the socket. We used an electrical filtering system and integrated it with an Arduino and low voltage amplifier to operate the prosthetic hand.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Lead 4-person team through design, prototyping, and testing cycles</li>
+                <li>Program Arduino control system to process EMG signals and actuate servos</li>
+                <li>Design and fabricate mechanical finger assemblies using 3D printing</li>
+                <li>Integrate sensors and develop signal processing algorithms for muscle activation</li>
+            </ul>
+
+            <p><strong>Core Challenge:</strong> Using EMG signals is hard, noisy, and difficult to differentiate. EMG signals are inherently inconsistent because they pick up electrical noise from muscles, skin movement, and environmental interference. We spent most of our time working with the electronics and programming to process the EMG signal and ensure its quality and usability. This involved implementing multiple filtering stages including high-pass filters to remove motion artifacts, low-pass filters to remove high-frequency noise, and notch filters to eliminate 60 Hz power line interference. We also had to develop adaptive thresholding algorithms that could distinguish between intentional muscle contractions and background noise, which varied significantly between users and even throughout a single testing session. Getting the signal processing robust enough to reliably detect muscle activation patterns while filtering out interference required extensive iteration and testing with different electrode placements and amplifier configurations.</p>
+
+            <div class="skills">
+                <span class="skill-tag">Arduino</span>
+                <span class="skill-tag">EMG Signal Processing</span>
+                <span class="skill-tag">Electrical Filtering</span>
+                <span class="skill-tag">Servo Control</span>
+                <span class="skill-tag">3D Printing</span>
+                <span class="skill-tag">Team Leadership</span>
+            </div>
+        </div>
+
+        <div class="project" id="project-vessels">
+            <h3>3D Printing Vessels and Surgery Training Setup</h3>
+            <div class="project-meta"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Laboratory</a>, UC San Diego | Jan 2024 - Present</div>
+            
+            <div class="project-image">[Add your image here]</div>
+
+            <p><strong>The Problem:</strong> Allographic vessels cause donor site challenges and complicate procedures. Current commercial vessels are acellular, mechanically different than vessels, and difficult to work with. In addition, microsurgery training devices are expensive, do not adequately mimic surgical environments, and single use.</p>
+
+            <p><strong>What I Built:</strong></p>
+            <ol>
+                <li>I worked on the mechanical testing of the vessels with burst pressure and tensile testing</li>
+                <li>I worked on the design of a microsurgery testing suite that allows surgical trainees to have continuous flow through a vessel while practicing vessel anastomosis</li>
+                <li>Design bioink for mimicking vascular adhesions (adventitia)</li>
+            </ol>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Design training suite for microsurgery practice with continuous flow capabilities</li>
+                <li>Design and execute testing procedures for mechanical characterization of 3D printed vessels</li>
+                <li>Develop bioink formulation and production procedure for adventitia bioink that mimics vascular adhesions</li>
+            </ul>
+
+            <p><strong>Challenges:</strong> Creating biomaterial for adventitia was very challenging as its properties are unique and are very important for manipulating the vessels without damaging them. The properties were very elastic but needed to be distinct to the vessel itself but they need to work together. Took a lot of iterations and improvements to the curing process and formulation.</p>
+
+            <div class="skills">
+                <span class="skill-tag">Biomaterial Design</span>
+                <span class="skill-tag">Cell Culture</span>
+                <span class="skill-tag">Mechanical Testing</span>
+                <span class="skill-tag">Burst Pressure Testing</span>
+                <span class="skill-tag">CAD</span>
+                <span class="skill-tag">SolidWorks</span>
+                <span class="skill-tag">Microsurgery</span>
+            </div>
+        </div>
+
+        <div class="project" id="project-mouse">
+            <h3>Mouse Biomechanics Data Acquisition</h3>
+            <div class="project-meta"><a href="https://cmrg.ucsd.edu" target="_blank">Cardiac Mechanics Research Group</a>, UC San Diego | Sep 2023 - Dec 2023</div>
+            
+            <div class="project-image">[Add your image here]</div>
+
+            <p><strong>The Problem:</strong> We wanted to get force plate data synced with video data of the mice that are lifting weights.</p>
+
+            <p><strong>What We Built:</strong> LabVIEW code base and SOP for operating a testing setup with NI DAQ system.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Program data acquisition system for collecting, syncing, and storing data</li>
+                <li>Train grad student researchers on system operation</li>
+            </ul>
+
+            <p><strong>Challenge:</strong> Force plates and video data were high throughput and we wanted to display them as the data was coming in as well as write to the data files. Was hard to work with dynamic data types and was time consuming modifying the NI built-in LabVIEW code.</p>
+
+            <div class="skills">
+                <span class="skill-tag">LabVIEW</span>
+                <span class="skill-tag">NI DAQ</span>
+                <span class="skill-tag">Data Acquisition</span>
+                <span class="skill-tag">Signal Processing</span>
+            </div>
+        </div>
+
+        <div class="project" id="project-cte">
+            <h3>Proteoglycan Extraction & Cartilage Tissue Engineering</h3>
+            <div class="project-meta">CTE Lab, UC San Diego | Sep 2025 - Present</div>
+            
+            <div class="project-image">[Add your image here]</div>
+
+            <p><strong>The Problem:</strong> Cartilage tissue engineering requires precise proteoglycan content and distribution within hydrogel scaffolds. Existing methods lack standardization and quantification protocols for proteoglycan extraction and integration.</p>
+
+            <p><strong>What I'm Building:</strong> Standardized proteoglycan extraction protocols, hydrogel synthesis methods, and a bioreactor system for hydroxyapatite double diffusion reaction between scaffold and collagen hydrogel.</p>
+
+            <p><strong>Key Responsibilities:</strong></p>
+            <ul>
+                <li>Standardize proteoglycan extraction protocols and develop quantification methods</li>
+                <li>Optimize hydrogel formulation for cell viability and proteoglycan integration</li>
+                <li>Design bioreactor for double diffusion reaction of hydroxyapatite between scaffold and collagen hydrogel</li>
+                <li>Document all procedures and maintain detailed experimental records</li>
+                <li>Conduct cell viability studies across various hydrogel formulations</li>
+            </ul>
+
+            <p><strong>Challenges:</strong> Maintaining consistent proteoglycan yield across extractions while preserving biological activity. Designing a bioreactor that enables controlled double diffusion while maintaining sterility and appropriate environmental conditions for tissue development.</p>
+
+            <div class="skills">
+                <span class="skill-tag">Proteoglycan Extraction</span>
+                <span class="skill-tag">Hydrogel Synthesis</span>
+                <span class="skill-tag">Bioreactor Design</span>
+                <span class="skill-tag">Cell Viability Testing</span>
+                <span class="skill-tag">Biomaterial Formulation</span>
+                <span class="skill-tag">Documentation</span>
+            </div>
+        </div>
+
+        <div class="project" id="project-liver">
+            <h3>Liver Tissue Engineering & Bioreactor (Coming Soon)</h3>
+            <div class="project-meta"><a href="https://schen.ucsd.edu/lab/" target="_blank">Chen Laboratory</a>, UC San Diego | Feb 2026 - Present</div>
+            
+            <div class="project-image">[Coming soon]</div>
+
+            <p><strong>The Project:</strong> Developing a bioreactor system for imaging and testing engineered liver tissue that will be implanted in a rat model. Just joined this project last week.</p>
+
+            <p><strong>Current Focus:</strong> Bioreactor design for real-time imaging and functional testing of liver constructs before implantation.</p>
+
+            <p><strong>More details coming soon as the project develops.</strong></p>
+
+            <div class="skills">
+                <span class="skill-tag">Bioreactor Design</span>
+                <span class="skill-tag">Tissue Engineering</span>
+                <span class="skill-tag">Live Imaging</span>
+                <span class="skill-tag">In Vivo Models</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="experience-item">
+            <h3>B.S. Bioengineering: Biotechnology</h3>
+            <div class="experience-meta">University of California San Diego | Graduating June 2026</div>
+            <ul>
+                <li>3.78 GPA, Provost Honors</li>
+                <li><strong>Relevant Coursework:</strong> <strong>Bioprocessing & Bioprocess Engineering</strong>, <strong>Tissue Engineering</strong>, <strong>Biomechanics</strong>, <strong>Molecular Biology</strong>, <strong>Cell Bioengineering</strong>, <strong>Biomaterials</strong>, <strong>Bioreactor Design</strong>, Recombinant DNA Technology, Biomedical Devices, Biochemistry, Organic Chemistry, Physiology, Medical Device Design, Engineering Mechanics, Thermodynamics, Fluid Mechanics, Materials Science, Differential Equations, Linear Algebra, Probability and Statistics</li>
+            </ul>
+        </div>
+    </section>
+
+            <footer id="contact">
+                <h2>Contact</h2>
+                <div class="contact-links">
+                    <a href="mailto:krish.narotam@gmail.com">Email</a>
+                    <a href="https://linkedin.com/in/krishnarotam" target="_blank">LinkedIn</a>
+                    <a href="tel:602-396-6945">Phone</a>
+                </div>
+                <p style="margin-top: 20px; font-size: 13px;">Last updated February 2026</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Simple sticky header - just show/hide
+        const stickyHeader = document.getElementById('stickyHeader');
+        const headerSection = document.querySelector('.header-section');
+        
+        let ticking = false;
+        
+        function lerp(start, end, progress) {
+            return start + (end - start) * progress;
+        }
+        
+        function updateHeader() {
+            const mainHeader = document.querySelector('.header-section h1');
+            const mainHeaderRect = mainHeader.getBoundingClientRect();
+            const headerSection = document.querySelector('.header-section');
+            const h1Element = stickyHeader.querySelector('h1');
+            const subtitleElement = stickyHeader.querySelector('.subtitle');
+            
+            // Show sticky header when main header reaches top of viewport
+            if (mainHeaderRect.top <= 20) {
+                stickyHeader.classList.add('visible');
+                
+                // Calculate how far we've scrolled past the header hitting the top
+                const scrollPastTop = Math.max(0, 20 - mainHeaderRect.top);
+                
+                // Animation completes halfway through home section
+                const homeSectionHeight = headerSection.offsetHeight;
+                const animationDistance = homeSectionHeight / 2;
+                
+                // Calculate progress (0 = large, 1 = small)
+                const progress = Math.min(scrollPastTop / animationDistance, 1);
+                
+                // Smoothly shrink font from 48px to 24px
+                const currentFontSize = lerp(48, 24, progress);
+                h1Element.style.fontSize = currentFontSize + 'px';
+                
+                // Show subtitle only after shrinking is complete (progress = 1)
+                if (progress >= 1) {
+                    subtitleElement.style.opacity = '1';
+                } else {
+                    subtitleElement.style.opacity = '0';
+                }
+                
+            } else {
+                // Header is hidden - reset to initial state
+                stickyHeader.classList.remove('visible');
+                h1Element.style.fontSize = '48px';
+                subtitleElement.style.opacity = '0';
+            }
+            
+            // Update active navigation
+            updateActiveNav();
+            
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        });
+        
+        // Initialize on load
+        updateHeader();
+
+        // Update active navigation based on scroll position
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section, .header-section');
+            const navLinks = document.querySelectorAll('nav a[data-section]');
+            const projectSubnav = document.getElementById('projectSubnav');
+            const projectLinks = document.querySelectorAll('.project-subnav a');
+            const projects = document.querySelectorAll('.project');
+            
+            let currentSection = 'top';
+            let currentProject = null;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                const scrollPosition = window.scrollY;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSection = section.id || 'top';
+                }
+            });
+            
+            // Find which project is currently in view
+            projects.forEach(project => {
+                const projectTop = project.offsetTop - 200;
+                const projectBottom = projectTop + project.offsetHeight;
+                const scrollPosition = window.scrollY;
+                
+                if (scrollPosition >= projectTop && scrollPosition < projectBottom) {
+                    currentProject = project.id;
+                }
+            });
+            
+            // Show project subnav when in projects section
+            if (currentSection === 'projects') {
+                projectSubnav.classList.add('visible');
+            } else {
+                projectSubnav.classList.remove('visible');
+            }
+            
+            // Highlight active project in subnav
+            projectLinks.forEach(link => {
+                link.classList.remove('active-project');
+                const linkTarget = link.getAttribute('href').substring(1); // Remove #
+                if (linkTarget === currentProject) {
+                    link.classList.add('active-project');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
